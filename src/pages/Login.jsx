@@ -36,7 +36,7 @@ export default function Login({ onLogin }) {
     const trimmed = code.trim().toUpperCase();
 
     if (!CODE_RE.test(trimmed)) {
-      setError("Formato inválido — debe ser U seguido de exactamente 8 dígitos");
+      setError("El código debe ser U seguido de exactamente 8 dígitos");
       return;
     }
 

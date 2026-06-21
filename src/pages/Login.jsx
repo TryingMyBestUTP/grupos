@@ -35,6 +35,12 @@ export default function Login({ onLogin }) {
     setError("");
     const trimmed = code.trim().toUpperCase();
 
+    // Profe
+    if (trimmed === "C27444") {
+      onLogin({ role: "teacher", name: "Johan Max Alexander Lopez Heredia" });
+      return;
+    }
+
     if (!CODE_RE.test(trimmed)) {
       setError("El código debe ser U seguido de exactamente 8 dígitos");
       return;

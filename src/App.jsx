@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Login from "./pages/Login";
 import Groups from "./pages/Groups";
+import Admin from "./pages/Admin";
 
 export default function App() {
   const [session, setSession] = useState(() => {
@@ -18,7 +19,7 @@ export default function App() {
     setSession(null);
   }
 
-  return session
-    ? <Groups session={session} onLogout={onLogout} />
-    : <Login onLogin={onLogin} />;
+  if (!session) return <Login onLogin={onLogin} />;
+  if (session.role === "teacher") return <Admin session={session} onLogout={onLogout} />;
+  return <Groups session={session} onLogout={onLogout} />;
 }
